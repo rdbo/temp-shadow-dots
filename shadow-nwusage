@@ -68,6 +68,10 @@ TX_SPEED="$(convert_bytes "$diff_tx")/s"
 # Update network usage cache
 printf "%s\n%s\n" "$RX_TOTAL" "$TX_TOTAL" > "$NWUSAGE_DATA_FILE"
 
+# Convert units for total RX/TX (better display on status bar or notifications)
+RX_TOTAL="$(convert_bytes "$RX_TOTAL")"
+TX_TOTAL="$(convert_bytes "$TX_TOTAL")"
+
 printf "%s\n" "rx_speed|string|$RX_SPEED"
 printf "%s\n" "tx_speed|string|$TX_SPEED"
 printf "%s\n" "rx|string|$RX_TOTAL"

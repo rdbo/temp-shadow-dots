@@ -43,24 +43,15 @@ bar:
           - string: { text: "{date} {time}" }
 
   right:
-    - cpu:
-        poll-interval: 1000
-        content:
-          map:
-            conditions:
-              id < 0:
-                string: { text: " CPU: {cpu}%" }
-    - mem:
-        poll-interval: 1000
-        content:
-          string: { text: "󰍛 MEM: {percent_used}%" }
     - script:
         path: /usr/local/bin/shadow-nwusage
         poll-interval: 1000
         content:
           map:
+            on-click:
+              left: 'notify-send " Network Usage" " Total Downloads: {rx}\n Total Uploads: {tx}"'
             default:
-              string: { text: "{rx_speed} {tx_speed}" }
+              string: { text: " {rx_speed}  {tx_speed}" }
             conditions: {  }
     - script:
         path: /usr/local/bin/shadow-nwif
@@ -81,6 +72,78 @@ bar:
                 string: { text: " {nwif}" }
               ~up && wireless:
                 string: { text: "睊 {nwif}" }
+    - cpu:
+        poll-interval: 1000
+        content:
+          map:
+            conditions:
+              id < 0:
+                string: { text: " CPU: {cpu}%" }
+    - mem:
+        poll-interval: 1000
+        content:
+          string: { text: "󰍛 MEM: {percent_used}%" }
+    - script:
+        path: /usr/local/bin/shadow-battery
+        poll-interval: 5000
+        content:
+          map:
+            on-click:
+              left: 'notify-send "󰁹 Battery: {battery}" "󰂑 Charge: {charge}%\n󰠠 Charging: {charging}"'
+              right: "sh -c 'ls /sys/class/power_supply | grep \"^BAT\" | fuzzel --dmenu --prompt \"Select battery...\" > \"$HOME/.cache/shadow/battery\"'"
+            conditions:
+              ~plugged:
+                string: { text: '󱟨 {battery}' }
+              ~charging:
+                map:
+                  conditions:
+                      charge == 100:
+                        - string: { text: "󰁹 {charge}%" }
+                      charge >= 90:
+                        - string: { text: "󰂂 {charge}%" }
+                      charge >= 80:
+                        - string: { text: "󰂁 {charge}%" }
+                      charge >= 70:
+                        - string: { text: "󰂀 {charge}%" }
+                      charge >= 60:
+                        - string: { text: "󰁿 {charge}%" }
+                      charge >= 50:
+                        - string: { text: "󰁾 {charge}%" }
+                      charge >= 40:
+                        - string: { text: "󰁽 {charge}%" }
+                      charge >= 30:
+                        - string: { text: "󰁼 {charge}%" }
+                      charge >= 20:
+                        - string: { text: "󰁻 {charge}%" }
+                      charge >= 10:
+                        - string: { text: "󰁺 {charge}%" }
+                      charge >= 0:
+                        - string: { text: "󱃍 {charge}%" }
+              charging:
+                map:
+                  conditions:
+                      charge == 100:
+                        - string: { text: "󰂅 {charge}%" }
+                      charge >= 90:
+                        - string: { text: "󰂋 {charge}%" }
+                      charge >= 80:
+                        - string: { text: "󰂊 {charge}%" }
+                      charge >= 70:
+                        - string: { text: "󰢞 {charge}%" }
+                      charge >= 60:
+                        - string: { text: "󰂉 {charge}%" }
+                      charge >= 50:
+                        - string: { text: "󰢝 {charge}%" }
+                      charge >= 40:
+                        - string: { text: "󰂈 {charge}%" }
+                      charge >= 30:
+                        - string: { text: "󰂇 {charge}%" }
+                      charge >= 20:
+                        - string: { text: "󰂆 {charge}%" }
+                      charge >= 10:
+                        - string: { text: "󰢜 {charge}%" }
+                      charge >= 0:
+                        - string: { text: "󰢟 {charge}%" }
     - pipewire:
         content:
           list:
