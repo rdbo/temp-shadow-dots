@@ -171,6 +171,7 @@ riverctl spawn 'wlr-randr --output HDMI-A-1 --mode "1920x1080@120"' # TODO: Remo
 
 riverctl focus-follows-cursor always
 riverctl map normal Super P spawn 'fuzzel'
+riverctl spawn /usr/libexec/pipewire-launcher
 riverctl spawn 'yambar'
 riverctl spawn 'swww init'
 riverctl spawn 'swww img "$HOME/background.png"'

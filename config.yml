@@ -155,6 +155,7 @@ bar:
               wheel-down: 'pactl set-{type}-volume "{name}" "-5%"'
             items:
               - map:
+                  # NOTE: If the source comes before the sink, it could display poorly!
                   conditions:
                     type == "sink":
                       map:
@@ -167,14 +168,23 @@ bar:
                       map:
                         conditions:
                           muted:
-                            string: { text: " {cubic_volume}% " }
+                            string: { text: " {cubic_volume}%" }
                         default:
-                          string: { text: " {cubic_volume}% " }
+                          string: { text: " {cubic_volume}%" }
+    - label:
+        content:
+          map:
+            on-click:
+              left: "shadow-screenshot"
+            default:
+              string: { text: " " }
+            conditions: {  }
+
     - label:
         content:
           map:
             on-click:
               left: 'shadow-toggle-vkbd'
             default:
-              string: { text: "󰌌 vkbd" }
+              string: { text: "󰌌 " }
             conditions: {  }
