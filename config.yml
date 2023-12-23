@@ -170,3 +170,11 @@ bar:
                             string: { text: " {cubic_volume}% " }
                         default:
                           string: { text: " {cubic_volume}% " }
+    - label:
+        content:
+          map:
+            on-click:
+              left: 'shadow-toggle-vkbd'
+            default:
+              string: { text: "󰌌 vkbd" }
+            conditions: {  }

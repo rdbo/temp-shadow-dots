@@ -1,0 +1,8 @@
+#!/bin/sh
+
+notify-send "󰌌 Toggled Virtual Keyboard"
+if pidof wvkbd-mobintl; then
+  pkill -9 wvkbd-mobintl
+else
+  wvkbd-mobintl -H 280 -L 280 --fn "FiraCode Nerd Font Mono:style=Bold" --bg "1b1b1b" --text "e6e6b5" --text-sp "e6e6b5"
+fi
