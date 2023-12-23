@@ -149,7 +149,8 @@ bar:
           list:
             on-click:
               left: 'pactl set-{type}-mute "{name}" toggle'
-              right: 'notify-send "Audio device: {name}"'
+              middle: 'notify-send " Audio device: {name}"'
+              right: 'foot -a wmfloat pulsemixer'
               wheel-up: 'pactl set-{type}-volume "{name}" "+5%"'
               wheel-down: 'pactl set-{type}-volume "{name}" "-5%"'
             items:
