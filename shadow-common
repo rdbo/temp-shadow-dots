@@ -1,0 +1,6 @@
+#!/bin/sh
+
+SHADOW_CACHE_DIR="$HOME/.cache/shadow"
+SHADOW_TMP_DIR="/tmp/.sh4d0w"
+
+mkdir -p "$SHADOW_CACHE_DIR" "$SHADOW_TMP_DIR"

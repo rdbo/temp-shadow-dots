@@ -1,0 +1,108 @@
+bar:
+  height: 32
+  location: top
+  foreground: e6e6b5ff
+  background: 1b1b1bff
+  font: FiraCode Nerd Font:style=Bold:pixelsize=14
+  margin: 18
+  spacing: 8
+
+  left:
+    - river:
+        anchors:
+          - base: &river_base
+              margin: 8
+              default: { string: { text: "{id}" } }
+              conditions: { }
+          
+        content:
+          map:
+            on-click:
+              left: 'sh -c "riverctl set-focused-tags $((1 << ({id} - 1)))"'
+              right: 'sh -c "riverctl toggle-focused-tags $((1 << ({id} - 1)))"'
+          
+            conditions:
+              id > 9:
+                empty: {  }
+              state == focused:
+                map:
+                  <<: *river_base
+                  deco:
+                    underline:
+                      size: 5
+                      color: e6e6b5ff
+              occupied:
+                map:
+                  <<: *river_base
+
+  center:
+    - clock:
+        date-format: "%a, %d %b %Y -"
+        time-format: "%H:%M:%S"
+        content:
+          - string: { text: "{date} {time}" }
+
+  right:
+    - cpu:
+        poll-interval: 1000
+        content:
+          map:
+            conditions:
+              id < 0:
+                string: { text: " CPU: {cpu}%" }
+    - mem:
+        poll-interval: 1000
+        content:
+          string: { text: "󰍛 MEM: {percent_used}%" }
+    - script:
+        path: /usr/local/bin/shadow-nwusage
+        poll-interval: 1000
+        content:
+          map:
+            default:
+              string: { text: "{rx_speed} {tx_speed}" }
+            conditions: {  }
+    - script:
+        path: /usr/local/bin/shadow-nwif
+        poll-interval: 1000
+        content:
+          map:
+            on-click:
+              left: 'notify-send " Interface: {nwif}" " Plugged: {plugged}\n Up: {up}\n直 Wireless: {wireless}\n󱄙 IPv4: {ipv4}\n󱄙 IPv6: {ipv6}"'
+              right: "sh -c 'ls /sys/class/net | fuzzel --dmenu --prompt \"Select network interface...\" > \"$HOME/.cache/shadow/nwif\"'"
+            conditions:
+              ~plugged:
+                string: { text: "󰚦 {nwif}" }
+              up && ~wireless:
+                string: { text: " {nwif}" }
+              up && wireless:
+                string: { text: "直 {nwif}" }
+              ~up && ~wireless:
+                string: { text: " {nwif}" }
+              ~up && wireless:
+                string: { text: "睊 {nwif}" }
+    - pipewire:
+        content:
+          list:
+            on-click:
+              left: 'pactl set-{type}-mute "{name}" toggle'
+              right: 'notify-send "Audio device: {name}"'
+              wheel-up: 'pactl set-{type}-volume "{name}" "+5%"'
+              wheel-down: 'pactl set-{type}-volume "{name}" "-5%"'
+            items:
+              - map:
+                  conditions:
+                    type == "sink":
+                      map:
+                        conditions:
+                          muted:
+                            string: { text: "ﳌ {cubic_volume}% " }
+                        default:
+                          string: { text: " {cubic_volume}% " }
+                    type == "source":
+                      map:
+                        conditions:
+                          muted:
+                            string: { text: " {cubic_volume}% " }
+                        default:
+                          string: { text: " {cubic_volume}% " }
