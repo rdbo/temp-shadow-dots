@@ -175,3 +175,15 @@ riverctl spawn /usr/libexec/pipewire-launcher
 riverctl spawn 'yambar'
 riverctl spawn 'swww init'
 riverctl spawn 'swww img "$HOME/background.png"'
+
+# set layout on start up
+kbdlayout="$HOME/.cache/shadow/kbdlayout"
+if [ -f "$kbdlayout" ]; then
+    layout="$(cat "$kbd_layout")"
+    if [ ! -z "$layout" ]; then
+        riverctl keyboard-layout "$layout"
+    fi
+fi
+
+riverctl map normal Super+Shift Esc spawn 'shadow-change-kbdlayout'
+

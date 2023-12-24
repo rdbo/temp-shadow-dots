@@ -1,11 +1,12 @@
 bar:
-  height: 32
+  height: 26
   location: top
   foreground: e6e6b5ff
   background: 1b1b1bff
-  font: FiraCode Nerd Font:style=Bold:pixelsize=14
-  margin: 18
-  spacing: 8
+  font: FiraCode Nerd Font:style=Bold:pixelsize=12
+  margin: 0
+  right-margin: 6
+  spacing: 6
 
   left:
     - river:
@@ -14,7 +15,6 @@ bar:
               margin: 8
               default: { string: { text: "{id}" } }
               conditions: { }
-          
         content:
           map:
             on-click:
@@ -179,7 +179,6 @@ bar:
             default:
               string: { text: " " }
             conditions: {  }
-
     - label:
         content:
           map:
@@ -187,4 +186,20 @@ bar:
               left: 'shadow-toggle-vkbd'
             default:
               string: { text: "󰌌 " }
+            conditions: {  }
+    - label:
+        content:
+          map:
+            on-click:
+              left: 'shadow-change-kbdlayout'
+            default:
+              string: { text: "󰗊 " }
+            conditions: {  }
+    - label:
+        content:
+          map:
+            on-click:
+              left: 'shadow-change-resolution'
+            default:
+              string: { text: "󰹑 " }
             conditions: {  }
