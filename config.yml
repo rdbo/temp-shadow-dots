@@ -203,3 +203,19 @@ bar:
             default:
               string: { text: "󰹑 " }
             conditions: {  }
+    - label:
+        content:
+          map:
+            on-click:
+              left: 'foot -a wmfloat bluetoothctl'
+            default:
+              string: { text: "󰂯" }
+            conditions: {  }
+    - label:
+        content:
+          map:
+            on-click:
+              left: 'shadow-power-menu'
+            default:
+              string: { text: " " }
+            conditions: {  }
