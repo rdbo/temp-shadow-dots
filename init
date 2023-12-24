@@ -108,6 +108,8 @@ riverctl map normal Super F11 enter-mode passthrough
 riverctl map passthrough Super F11 enter-mode normal
 
 # Start programs
+pkill -9 'pipewire.*'
+
 riverctl spawn 'rivertile -view-padding 6 -outer-padding 6'
 riverctl spawn 'dbus-launch /usr/libexec/pipewire-launcher'
 riverctl spawn 'yambar'
