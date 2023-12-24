@@ -3,7 +3,7 @@ bar:
   location: top
   foreground: e6e6b5ff
   background: 1b1b1bff
-  font: FiraCode Nerd Font:style=Bold:pixelsize=12
+  font: FiraCode Nerd Font:style=Bold:size=12
   margin: 0
   right-margin: 6
   spacing: 6
@@ -78,11 +78,11 @@ bar:
           map:
             conditions:
               id < 0:
-                string: { text: " CPU: {cpu}%" }
+                string: { text: " {cpu}%" }
     - mem:
         poll-interval: 1000
         content:
-          string: { text: "󰍛 MEM: {percent_used}%" }
+          string: { text: " {percent_used}%" }
     - script:
         path: /usr/local/bin/shadow-battery
         poll-interval: 5000
