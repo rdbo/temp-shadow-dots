@@ -186,4 +186,4 @@ if [ -f "$kbdlayout" ]; then
 fi
 
 riverctl map normal Super+Shift Esc spawn 'shadow-change-kbdlayout'
-
+riverctl map normal Super+Shift X spawn 'shadow-lock-screen'
