@@ -76,13 +76,20 @@ bar:
         poll-interval: 1000
         content:
           map:
+            on-click:
+              left: 'notify-send "  CPU Usage" "Total CPU usage: {cpu}%"'
             conditions:
               id < 0:
                 string: { text: " {cpu}%" }
     - mem:
         poll-interval: 1000
         content:
-          string: { text: " {percent_used}%" }
+          map:
+            on-click:
+              left: 'notify-send "  Memory Usage" "Used memory: {used:mb}MB ({percent_used}%)\nAvailable memory: {free:mb}MB ({percent_free}%)"'
+            conditions: {  }
+            default:
+              string: { text: " {percent_used}%" }
     - script:
         path: /usr/local/bin/shadow-battery
         poll-interval: 5000

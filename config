@@ -4,4 +4,4 @@ text-color=#E6E6B5FF
 width=400
 height=300
 border-color=#E6E6B5FF
-default-timeout=3000
+default-timeout=5000
