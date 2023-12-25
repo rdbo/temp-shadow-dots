@@ -2,7 +2,11 @@
 
 SCREENSHOT_DIR="$HOME/Pictures"
 
-notify-send "  Taking screenshot..." "Select the area to be captured"
+if [ ! -d "$SCREENSHOT_DIR" ]; then
+  mkdir -p "$SCREENSHOT_DIR"
+fi
+
+notify-send "  Taking screenshot..." "󰒅 Select the area to be captured"
 
 geom="$(slurp)"
 if [ $? -ne 0 ]; then
@@ -15,4 +19,4 @@ scrsht_path="$SCREENSHOT_DIR/$scrsht_file"
 grim -g "$geom" "$scrsht_path"
 wl-copy -t image/png < "$scrsht_path"
 
-notify-send "  Screenshot taken" "Copied image to clipboard\nSaved copy to \"$scrsht_path\""
+notify-send "  Screenshot taken" "󰆏 Copied image to clipboard\n󱣪 Saved copy to \"$scrsht_path\""
