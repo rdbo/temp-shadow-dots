@@ -1,6 +1,6 @@
 #!/bin/sh
 
-notify-send "󰌌 Toggled Virtual Keyboard"
+notify-send "󰌌 Toggled virtual keyboard"
 if pidof wvkbd-mobintl; then
   pkill -9 wvkbd-mobintl
 else
