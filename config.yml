@@ -214,7 +214,7 @@ bar:
         content:
           map:
             on-click:
-              left: 'foot -a wmfloat bluetoothctl'
+              left: "sh -c 'notify-send \" Started bluetoothctl\"; foot -a wmfloat bluetoothctl'"
             default:
               string: { text: "󰂯" }
             conditions: {  }
@@ -222,7 +222,7 @@ bar:
         content:
           map:
             on-click:
-              left: 'shadow-power-menu'
+              left: "sh -c 'notify-send \" Started power menu\"; shadow-power-menu'"
             default:
               string: { text: " " }
             conditions: {  }
