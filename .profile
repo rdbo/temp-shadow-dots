@@ -1,8 +1,11 @@
+#!/bin/sh
+
+. shadow-common
+
 # show logo
 echo
-
 curtty="$(tty | grep tty)"
-logo="$HOME/.cache/shadow/logo"
+logo="$SHADOW_CONFIG_DIR/logo"
 if [ -z "$curtty" ]; then
 	# terminal
 	img2sixel -B "#212121" "$logo"
@@ -22,6 +25,6 @@ fi
 export PS1="$PS1\033[0;37m"
 
 # start window manager on tty1
-if [ "$(tty)" = "/dev/tty1" ]; then
-	startx
+if [ "$curtty" = "/dev/tty1" ]; then
+	river
 fi

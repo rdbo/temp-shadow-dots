@@ -2,7 +2,7 @@
 
 . shadow-common
 
-BAT_FILE="$SHADOW_CACHE_DIR/battery"
+BAT_FILE="$SHADOW_CONFIG_DIR/battery"
 SYS_BAT_DIR="/sys/class/power_supply"
 
 # Data shared with status bar

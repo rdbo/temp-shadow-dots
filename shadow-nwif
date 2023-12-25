@@ -2,7 +2,7 @@
 
 . shadow-common
 
-NWIF_FILE="$SHADOW_CACHE_DIR/nwif"
+NWIF_FILE="$SHADOW_CONFIG_DIR/nwif"
 SYS_NWIF_DIR="/sys/class/net"
 
 # Data shared with status bar

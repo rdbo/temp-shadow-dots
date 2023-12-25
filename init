@@ -2,6 +2,8 @@
 
 # River version: 0.2.6
 
+. shadow-common
+
 # Background
 riverctl background-color "0x000000FF"
 
@@ -23,7 +25,7 @@ riverctl set-cursor-warp disabled
 # Keyboard
 riverctl set-repeat 50 300
 
-kbdlayout="$HOME/.cache/shadow/kbdlayout" # This file is created by the 'shadow-change-kbdlayout' script
+kbdlayout="$SHADOW_CONFIG_DIR/kbdlayout" # This file is created by the 'shadow-change-kbdlayout' script
 if [ -f "$kbdlayout" ]; then
   layout="$(cat "$kbdlayout")"
   if [ ! -z "$layout" ]; then
@@ -117,4 +119,4 @@ riverctl spawn 'rivertile -view-padding 6 -outer-padding 6'
 riverctl spawn 'dbus-launch /usr/libexec/pipewire-launcher'
 riverctl spawn 'yambar'
 riverctl spawn 'swww init'
-riverctl spawn 'swww img "$HOME/.cache/shadow/background"'
+riverctl spawn "swww img \"$SHADOW_CONFIG_DIR/background\""

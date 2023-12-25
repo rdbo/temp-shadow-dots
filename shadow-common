@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SHADOW_CACHE_DIR="$HOME/.cache/shadow"
+SHADOW_CONFIG_DIR="$HOME/.config/shadow"
 SHADOW_TMP_DIR="/tmp/.sh4d0w"
 
-mkdir -p "$SHADOW_CACHE_DIR" "$SHADOW_TMP_DIR"
+mkdir -p "$SHADOW_CONFIG_DIR" "$SHADOW_TMP_DIR"
