@@ -1,6 +1,14 @@
 # show logo
 echo
-img2sixel -B "#212121" "$HOME/logo.png"
+
+curtty="$(tty | grep tty)"
+if [ -z "$curtty" ]; then
+	# terminal
+	img2sixel -B "#212121" "$HOME/logo.png"
+else
+	# tty
+	catimg -t -c -H 48 "$HOME/logo.png"
+fi
 echo
 
 # setup $PS1
