@@ -96,12 +96,14 @@ riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 ## Programs
-riverctl map normal Super+Shift Return spawn "ENV=$HOME/.profile foot"
+riverctl map normal Super E spawn xfe # TODO: Look for Wayland file manager
 riverctl map normal Super P spawn 'fuzzel'
+riverctl map normal Super Print spawn 'shadow-screenshot'
+
+riverctl map normal Super+Shift Return spawn "ENV=$HOME/.profile foot"
 riverctl map normal Super+Shift Escape spawn 'shadow-change-resolution'
 riverctl map normal Super+Shift Tab spawn 'shadow-change-kbdlayout'
 riverctl map normal Super+Shift X spawn 'shadow-lock-screen'
-riverctl map normal Super E spawn xfe # TODO: Look for Wayland file manager
 
 ## Misc
 riverctl declare-mode passthrough
