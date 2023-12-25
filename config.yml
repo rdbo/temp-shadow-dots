@@ -77,7 +77,7 @@ bar:
         content:
           map:
             on-click:
-              left: 'notify-send "  CPU Usage" "Total CPU usage: {cpu}%"'
+              left: 'notify-send "  CPU Usage" " Total CPU usage: {cpu}%"'
             conditions:
               id < 0:
                 string: { text: " {cpu}%" }
@@ -86,7 +86,7 @@ bar:
         content:
           map:
             on-click:
-              left: 'notify-send "  Memory Usage" "Used memory: {used:mb}MB ({percent_used}%)\nAvailable memory: {free:mb}MB ({percent_free}%)"'
+              left: 'notify-send " Memory Usage" "󰍛 Used memory: {used:mb}MB ({percent_used}%)\n󰍛 Available memory: {free:mb}MB ({percent_free}%)"'
             conditions: {  }
             default:
               string: { text: " {percent_used}%" }
@@ -156,7 +156,7 @@ bar:
           list:
             on-click:
               left: 'pactl set-{type}-mute "{name}" toggle'
-              middle: 'notify-send " Audio device: {name}"'
+              middle: 'notify-send " Audio device" "{name}"'
               right: 'foot -a wmfloat pulsemixer'
               wheel-up: 'pactl set-{type}-volume "{name}" "+5%"'
               wheel-down: 'pactl set-{type}-volume "{name}" "-5%"'
