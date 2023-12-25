@@ -2,12 +2,13 @@
 echo
 
 curtty="$(tty | grep tty)"
+logo="$HOME/.cache/shadow/logo"
 if [ -z "$curtty" ]; then
 	# terminal
-	img2sixel -B "#212121" "$HOME/logo.png"
+	img2sixel -B "#212121" "$logo"
 else
 	# tty
-	catimg -t -c -H 48 "$HOME/logo.png"
+	catimg -t -c -H 48 "$logo"
 fi
 echo
 
