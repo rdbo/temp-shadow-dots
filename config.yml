@@ -200,7 +200,7 @@ bar:
             on-click:
               left: 'shadow-change-kbdlayout'
             default:
-              string: { text: "󰗊 " }
+              string: { text: " " }
             conditions: {  }
     - label:
         content:
