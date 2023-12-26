@@ -60,7 +60,7 @@ bar:
           map:
             on-click:
               left: 'notify-send " Interface: {nwif}" " Plugged: {plugged}\n Up: {up}\n直 Wireless: {wireless}\n󱄙 IPv4: {ipv4}\n󱄙 IPv6: {ipv6}"'
-              right: "sh -c '. shadow-common; ls /sys/class/net | fuzzel --dmenu -p \"Select network interface...\" > \"$SHADOW_CONFIG_DIR/nwif\"'"
+              right: "sh -c '. shadow-common; ls /sys/class/net | shadow-dmenu -p \"Select network interface...\" > \"$SHADOW_CONFIG_DIR/nwif\"'"
             conditions:
               ~plugged:
                 string: { text: "󰚦 {nwif}" }
@@ -97,7 +97,7 @@ bar:
           map:
             on-click:
               left: 'notify-send "󰁹 Battery: {battery}" "󰂑 Charge: {charge}%\n󰠠 Charging: {charging}"'
-              right: "sh -c '. shadow-common; ls /sys/class/power_supply | grep \"^BAT\" | fuzzel --dmenu -p \"Select battery...\" > \"$SHADOW_CONFIG_DIR/battery\"'"
+              right: "sh -c '. shadow-common; ls /sys/class/power_supply | grep \"^BAT\" | shadow-dmenu -p \"Select battery...\" > \"$SHADOW_CONFIG_DIR/battery\"'"
             conditions:
               ~plugged:
                 string: { text: '󱟨 {battery}' }
