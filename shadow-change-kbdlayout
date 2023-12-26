@@ -12,8 +12,8 @@ xkb_layouts="$(ls /usr/share/X11/xkb/symbols/ | grep -E '^.{2}$')"
 layout="$(printf "$xkb_layouts\n" | shadow-dmenu -p "Select the keyboard layout...")"
 
 if [ -z "$layout" ]; then
-  notify-send "󰗊 Canceled keyboard layout change"
-  exit 1
+	notify-send "󰗊 Canceled keyboard layout change"
+	exit 1
 fi
 
 riverctl keyboard-layout "$layout"

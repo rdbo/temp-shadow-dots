@@ -3,8 +3,8 @@
 notify-send '󰹑  Changing resolution...'
 
 function cancel {
-  notify-send '󰹑  Canceled resolution change'
-  exit 1
+	notify-send '󰹑  Canceled resolution change'
+	exit 1
 }
 
 # Retrieve monitor list from 'randr' program
@@ -13,7 +13,7 @@ monitors="$(wlr-randr | grep -E '^[^ ]' | cut -d ' ' -f 1)"
 # Pick monitor
 mon="$(printf "%s\n" "$monitors" | shadow-dmenu -p "Select a monitor...")"
 if [ $? -ne 0 ]; then
-  cancel
+	cancel
 fi
 
 # Retrieve 'randr' monitor information
@@ -25,7 +25,7 @@ resolutions=$(printf "%s\n" "$moninfo" | grep -E '^[ ]{4}' | awk -F ' ' '{ print
 # Pick resolution
 res="$(printf "%s\n" "$resolutions" | shadow-dmenu -p "Select a resolution...")"
 if [ $? -ne 0 ]; then
-  cancel
+	cancel
 fi
 
 # Retrieve refresh rates from the picked resolution
@@ -34,7 +34,7 @@ rates=$(printf "%s\n" "$moninfo" | grep -E "^[ ]{4}$res" | awk -F ' ' '{ print $
 # Pick refresh rate
 rate="$(printf "%s\n" "$rates" | shadow-dmenu -p "Select a refresh rate...")"
 if [ $? -ne 0 ]; then
-  cancel
+	cancel
 fi
 
 # Change the resolution
