@@ -1,0 +1,15 @@
+#!/bin/sh
+
+path_dirs="$(printf "%s\n" "$PATH" | tr ':' '\n')"
+binaries=""
+
+for path in $path_dirs; do
+	dirbins="$(find "$path" -type f -executable)"
+	binaries="${binaries}${dirbins}"
+done
+
+executables="$(printf "%s\n" "$binaries" | sed 's|.*/||g')"
+
+cmd="$(printf "%s\n" "$executables" | shadow-dmenu -p "Executable: ")"
+
+$cmd &

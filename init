@@ -99,7 +99,7 @@ riverctl map normal Super+Shift 0 set-view-tags $all_tags
 
 ## Programs
 riverctl map normal Super E spawn xfe # TODO: Look for Wayland file manager
-riverctl map normal Super P spawn 'fuzzel'
+riverctl map normal Super P spawn 'shadow-launcher'
 riverctl map normal Super Print spawn 'shadow-screenshot'
 
 riverctl map normal Super+Shift Return spawn "ENV=$HOME/.profile foot"
