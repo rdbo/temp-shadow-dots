@@ -10,6 +10,6 @@ done
 
 executables="$(printf "%s\n" "$binaries" | sed 's|.*/||g')"
 
-cmd="$(printf "%s\n" "$executables" | shadow-dmenu -p "Executable: ")"
+cmd="$(printf "%s\n" "$executables" | shadow-dmenu -p "Run: ")"
 
 $cmd &
