@@ -5,7 +5,11 @@ binaries=""
 
 for path in $path_dirs; do
 	dirbins="$(find "$path" -type f -executable)"
-	binaries="${binaries}${dirbins}"
+	if [ -z "$binaries" ]; then
+		binaries="$dirbins"
+	else
+		binaries="$(printf "${binaries}\n${dirbins}")"
+	fi
 done
 
 executables="$(printf "%s\n" "$binaries" | sed 's|.*/||g')"
